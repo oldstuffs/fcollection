@@ -2,15 +2,17 @@ package io.github.portlek.fcollection.models;
 
 import java.util.Date;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,19 +20,20 @@ import lombok.Setter;
 /**
  * a class that represents a Movie.
  */
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Table
+@Entity(name = "Movie")
+@Table(name = "movie")
 public class Movie {
 
   /**
    * description of the movie.
    */
   @Column(
-    nullable = false
+    name = "description",
+    nullable = false,
+    columnDefinition = "TEXT"
   )
   private String description;
 
@@ -38,7 +41,9 @@ public class Movie {
    * genre of the movie.
    */
   @Column(
-    nullable = false
+    name = "genre",
+    nullable = false,
+    columnDefinition = "TEXT"
   )
   private String genre;
 
@@ -56,6 +61,7 @@ public class Movie {
     generator = "movie_sequence"
   )
   @Column(
+    name = "id",
     updatable = false
   )
   private long id;
@@ -65,7 +71,8 @@ public class Movie {
    */
   @Column(
     name = "media_url",
-    nullable = false
+    nullable = false,
+    columnDefinition = "TEXT"
   )
   private String mediaUrl;
 
@@ -73,16 +80,18 @@ public class Movie {
    * name of the movie.
    */
   @Column(
-    nullable = false
+    name = "name",
+    nullable = false,
+    columnDefinition = "TEXT"
   )
   private String name;
 
   /**
    * performer of the movie.
    */
-  @ElementCollection
-  @Column(
-    nullable = false
+  @ManyToMany(
+    targetEntity = Performer.class,
+    cascade = CascadeType.ALL
   )
   private Set<Performer> performers;
 
@@ -90,6 +99,7 @@ public class Movie {
    * released date of the movie.
    */
   @Column(
+    name = "released",
     nullable = false
   )
   private Date released;
@@ -97,10 +107,31 @@ public class Movie {
   /**
    * supported languages of the movie.
    */
-  @ElementCollection
-  @Column(
-    name = "supported_languages",
-    nullable = false
+  @ElementCollection(targetClass = String.class)
+  @JoinTable(
+    name = "supported_languages"
   )
   private Set<String> supportedLanguages;
+
+  /**
+   * ctor.
+   *
+   * @param name the name.
+   * @param description the description.
+   * @param genre the genre.
+   * @param mediaUrl the media url.
+   * @param performers the performers.
+   * @param released the release.
+   * @param supportedLanguages the supported languages.
+   */
+  public Movie(final String name, final String description, final String genre, final String mediaUrl,
+               final Set<Performer> performers, final Date released, final Set<String> supportedLanguages) {
+    this.name = name;
+    this.description = description;
+    this.genre = genre;
+    this.mediaUrl = mediaUrl;
+    this.performers = performers;
+    this.released = released;
+    this.supportedLanguages = supportedLanguages;
+  }
 }
