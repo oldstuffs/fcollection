@@ -23,7 +23,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public final class Movie {
+public class Movie {
 
   /**
    * performer of the movie.
@@ -38,7 +38,8 @@ public final class Movie {
    * description of the movie.
    */
   @Column(
-    name = "description"
+    name = "description",
+    nullable = false
   )
   private String description;
 
@@ -46,7 +47,8 @@ public final class Movie {
    * genre of the movie.
    */
   @Column(
-    name = "genre"
+    name = "genre",
+    nullable = false
   )
   private String genre;
 
@@ -73,7 +75,8 @@ public final class Movie {
    * media url of the movie.
    */
   @Column(
-    name = "media_url"
+    name = "media_url",
+    nullable = false
   )
   private String mediaUrl;
 
@@ -81,7 +84,8 @@ public final class Movie {
    * name of the movie.
    */
   @Column(
-    name = "name"
+    name = "name",
+    nullable = false
   )
   private String name;
 
@@ -89,7 +93,8 @@ public final class Movie {
    * released date of the movie.
    */
   @Column(
-    name = "released"
+    name = "released",
+    nullable = false
   )
   private Date released;
 
