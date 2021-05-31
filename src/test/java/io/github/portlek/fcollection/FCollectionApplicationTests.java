@@ -9,5 +9,4 @@ class FCollectionApplicationTests {
   @Test
   void contextLoads() {
   }
-
 }
