@@ -29,11 +29,11 @@ import lombok.Setter;
   name = "movie",
   uniqueConstraints = {
     @UniqueConstraint(
-      name = "move_performers",
+      name = "movie_performers",
       columnNames = "performers"
     ),
     @UniqueConstraint(
-      name = "move_supported_languages",
+      name = "movie_supported_languages",
       columnNames = "supported_languages"
     )
   }
