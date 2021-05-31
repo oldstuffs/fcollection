@@ -96,11 +96,6 @@ public class Movie {
 
   /**
    * supported languages of the movie.
-   * <p>
-   * scheme:
-   * <pre>
-   * (language-1),(language-2),(language-2)
-   * </pre>
    */
   @ElementCollection
   @Column(
