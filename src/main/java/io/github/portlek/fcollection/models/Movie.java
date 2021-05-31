@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,16 +24,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "movie")
 public class Movie {
-
-  /**
-   * performer of the movie.
-   */
-  @ElementCollection
-  @Column(
-    name = "performers"
-  )
-  private Set<Performer> performers = new HashSet<>();
 
   /**
    * description of the movie.
@@ -88,6 +81,15 @@ public class Movie {
     nullable = false
   )
   private String name;
+
+  /**
+   * performer of the movie.
+   */
+  @ElementCollection
+  @Column(
+    name = "performers"
+  )
+  private Set<Performer> performers = new HashSet<>();
 
   /**
    * released date of the movie.
