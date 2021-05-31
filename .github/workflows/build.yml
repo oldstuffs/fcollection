@@ -30,7 +30,4 @@ jobs:
           java-version: 11
 
       - run: |
-          mvn package
-          mvn test -Pcoverage jacoco:report
-
-      - uses: codecov/codecov-action@v1.0.14
+          mvnw package
