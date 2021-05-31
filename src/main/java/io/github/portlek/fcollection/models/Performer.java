@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Embeddable
-public final class Performer {
+public class Performer {
 
   /**
    * name of the performer.
@@ -30,10 +30,10 @@ public final class Performer {
   private String role;
 
   /**
-   * surname of the performer.
+   * last name of the performer.
    */
   @Column(
-    name = "surname"
+    name = "last_name"
   )
-  private String surname;
+  private String lastName;
 }

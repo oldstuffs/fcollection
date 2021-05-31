@@ -1,7 +1,6 @@
 package io.github.portlek.fcollection.models;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -11,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,26 +23,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(
-  name = "movie",
-  uniqueConstraints = {
-    @UniqueConstraint(
-      name = "movie_performers",
-      columnNames = "performers"
-    ),
-    @UniqueConstraint(
-      name = "movie_supported_languages",
-      columnNames = "supported_languages"
-    )
-  }
-)
+@Table
 public class Movie {
 
   /**
    * description of the movie.
    */
   @Column(
-    name = "description",
     nullable = false
   )
   private String description;
@@ -53,7 +38,6 @@ public class Movie {
    * genre of the movie.
    */
   @Column(
-    name = "genre",
     nullable = false
   )
   private String genre;
@@ -72,7 +56,6 @@ public class Movie {
     generator = "movie_sequence"
   )
   @Column(
-    name = "id",
     updatable = false
   )
   private long id;
@@ -90,7 +73,6 @@ public class Movie {
    * name of the movie.
    */
   @Column(
-    name = "name",
     nullable = false
   )
   private String name;
@@ -100,15 +82,14 @@ public class Movie {
    */
   @ElementCollection
   @Column(
-    name = "performers"
+    nullable = false
   )
-  private Set<Performer> performers = new HashSet<>();
+  private Set<Performer> performers;
 
   /**
    * released date of the movie.
    */
   @Column(
-    name = "released",
     nullable = false
   )
   private Date released;
@@ -123,7 +104,8 @@ public class Movie {
    */
   @ElementCollection
   @Column(
-    name = "supported_languages"
+    name = "supported_languages",
+    nullable = false
   )
-  private Set<String> supportedLanguages = new HashSet<>();
+  private Set<String> supportedLanguages;
 }
