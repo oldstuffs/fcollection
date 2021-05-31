@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FcollectionApplication {
+public class FCollectionApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(FcollectionApplication.class, args);
+  public static void main(final String[] args) {
+    SpringApplication.run(FCollectionApplication.class, args);
   }
-
 }

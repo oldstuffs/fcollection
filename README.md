@@ -1,3 +1,3 @@
 # fcollection
 
-Film collection application powered by Spring and Thymeleaf
+Film collection application powered by Spring and Thymeleaf.
