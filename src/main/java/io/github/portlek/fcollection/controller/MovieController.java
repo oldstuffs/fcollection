@@ -39,8 +39,9 @@ public class MovieController {
    * @param entry the entry to add.
    */
   @PostMapping
-  public void addMovie(@RequestBody final MovieEntry entry) {
+  public ResponseEntity<?> addMovie(@RequestBody final MovieEntry entry) {
     this.service.addMovie(entry);
+    return ResponseEntity.ok().build();
   }
 
   /**
@@ -61,9 +62,10 @@ public class MovieController {
    * @param uniqueId the unique id to delete.
    */
   @DeleteMapping("/{id}")
-  public void deleteMovie(
+  public ResponseEntity<?> deleteMovie(
     @PathVariable("id") final String uniqueId) {
     this.service.deleteMovie(uniqueId);
+    return ResponseEntity.ok().build();
   }
 
   /**
