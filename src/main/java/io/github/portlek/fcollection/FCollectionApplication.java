@@ -17,29 +17,4 @@ public class FCollectionApplication {
   public static void main(final String[] args) {
     SpringApplication.run(FCollectionApplication.class, args);
   }
-
-  @Bean
-  public CommandLineRunner commandLineRunner(final MovieRepository repository) {
-    return args -> {
-      final var performer = new Performer("Hasan", "Demirtaş");
-      final var languages = Set.of("tr_TR", "en_US");
-      repository.saveAll(Set.of(
-        new Movie(
-          "Movie 1",
-          "fdese",
-          "asdasd",
-          "aslşdjasd",
-          Set.of(performer),
-          Date.from(Instant.now()),
-          languages),
-        new Movie(
-          "Movie 2",
-          "fdesasdasde",
-          "asdasdasdsaasd",
-          "aslşdjaasdadasdasd",
-          Set.of(performer),
-          Date.from(Instant.now()),
-          languages)));
-    };
-  }
 }

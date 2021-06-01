@@ -33,7 +33,7 @@ public class MovieController {
    *
    * @return obtained movies by genre.
    */
-  @GetMapping("/{genre}")
+  @GetMapping("/genre/{genre}")
   public Collection<Movie> getMoviesByGenre(
     @PathVariable("genre") final String name) {
     return this.service.getMoviesByGenre(name);
@@ -46,7 +46,7 @@ public class MovieController {
    *
    * @return obtained movies by name.
    */
-  @GetMapping("/{name}")
+  @GetMapping("/name/{name}")
   public Collection<Movie> getMoviesByName(
     @PathVariable("name") final String name) {
     return this.service.getMoviesByName(name);
