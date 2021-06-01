@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +19,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity(name = "Language")
-@Table(name = "supported_languages")
+@Table(
+  name = "supported_languages",
+  uniqueConstraints = {
+    @UniqueConstraint(name = "supported_languages_language_unique", columnNames = "language")
+  }
+)
 public class Language {
 
   /**
