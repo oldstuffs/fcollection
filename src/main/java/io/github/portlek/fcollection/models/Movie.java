@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -92,9 +93,6 @@ public class Movie {
     targetEntity = Performer.class,
     cascade = {CascadeType.PERSIST, CascadeType.REMOVE}
   )
-  @JoinTable(
-    name = "move_performers"
-  )
   private Set<Performer> performers;
 
   /**
@@ -112,9 +110,6 @@ public class Movie {
   @OneToMany(
     targetEntity = Language.class,
     cascade = {CascadeType.PERSIST, CascadeType.REMOVE}
-  )
-  @JoinTable(
-    name = "move_supported_languages"
   )
   private Set<Language> supportedLanguages;
 

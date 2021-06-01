@@ -3,7 +3,9 @@ package io.github.portlek.fcollection.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +25,15 @@ public class Performer {
    * id of the performer.
    */
   @Id
-  @GeneratedValue
+  @SequenceGenerator(
+    name = "performer_sequence",
+    sequenceName = "performer_sequence",
+    allocationSize = 1
+  )
+  @GeneratedValue(
+    strategy = GenerationType.SEQUENCE,
+    generator = "performer_sequence"
+  )
   @Column(
     name = "id",
     updatable = false
