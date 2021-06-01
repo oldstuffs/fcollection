@@ -1,4 +1,4 @@
-package io.github.portlek.fcollection.controller;
+package io.github.portlek.fcollection.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -22,7 +22,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-final class MovieControllerTest {
+final class MovieServiceTest {
 
   @Autowired
   private MovieRepository repository;
