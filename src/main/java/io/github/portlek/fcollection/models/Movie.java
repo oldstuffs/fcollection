@@ -1,8 +1,8 @@
 package io.github.portlek.fcollection.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Set;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,6 +49,7 @@ public class Movie {
   /**
    * released date of the movie.
    */
+  @JsonFormat(pattern = "dd-MM-yyyy")
   private Date released;
 
   /**

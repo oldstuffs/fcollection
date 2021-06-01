@@ -1,51 +1,59 @@
 package io.github.portlek.fcollection.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Collection;
 import java.util.Date;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
  * a class that represents a {@link Movie}'s entries to create {@link Movie}.
  */
 @ToString
-@RequiredArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public final class MovieEntry {
 
   /**
    * description of the movie.
    */
-  private final String description;
+  private String description;
 
   /**
    * genre of the movie.
    */
-  private final String genre;
+  private String genre;
 
   /**
    * media url of the movie.
    */
-  private final String mediaUrl;
+  private String mediaUrl;
 
   /**
    * name of the movie.
    */
-  private final String name;
+  private String name;
 
   /**
    * performers of the movie.
    */
-  private final Collection<Performer> performers;
+  private Collection<Performer> performers;
 
   /**
    * released date of the movie.
    */
-  private final Date released;
+  @JsonFormat(pattern = "dd-MM-yyyy")
+  private Date released;
 
   /**
    * supported languages of the movie.
    */
-  private final Collection<String> supportedLanguages;
+  private Collection<String> supportedLanguages;
 
   /**
    * creates a movie.

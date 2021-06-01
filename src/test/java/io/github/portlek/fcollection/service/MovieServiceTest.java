@@ -6,8 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import io.github.portlek.fcollection.models.MovieEntry;
 import io.github.portlek.fcollection.models.Performer;
 import io.github.portlek.fcollection.repository.MovieRepository;
-import io.github.portlek.fcollection.service.MovieService;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.List;
 import org.junit.jupiter.api.MethodOrderer;
@@ -32,7 +33,7 @@ final class MovieServiceTest {
 
   @Test
   @Order(0)
-  void addMovie() {
+  void addMovie() throws Exception {
     final var entry = new MovieEntry(
       "description",
       "genre",

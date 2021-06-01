@@ -29,7 +29,7 @@ Haven't maven installed
       "role": "performer role"
     }
   ],
-  "released": "date with format",
+  "released": "dd-MM-yyyy",
   "supportedLanguages": [
     "tr_TR",
     "en_US"
