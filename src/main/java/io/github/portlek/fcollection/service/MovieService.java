@@ -1,15 +1,12 @@
 package io.github.portlek.fcollection.service;
 
 import io.github.portlek.fcollection.models.Movie;
-import io.github.portlek.fcollection.models.Performer;
 import io.github.portlek.fcollection.repository.MovieRepository;
 import io.github.portlek.fcollection.repository.PerformerRepository;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.stereotype.Service;
 
 /**
@@ -43,7 +40,6 @@ public class MovieService {
     final var performers = this.performerRepository.findAllByName(name);
     // SELECT * FROM movie_performers  WHERE performers_id = 3;
     performers.forEach(performer -> {
-
     });
     return movies;
   }
