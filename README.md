@@ -4,7 +4,7 @@
 
 ### Build The Project
 
-Have maven installed:
+Have maven installed
 
 `mvn clean package`
 
