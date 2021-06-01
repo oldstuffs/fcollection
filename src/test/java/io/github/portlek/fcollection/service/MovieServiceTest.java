@@ -33,7 +33,7 @@ final class MovieServiceTest {
 
   @Test
   @Order(0)
-  void addMovie() throws Exception {
+  void addMovie() {
     final var entry = new MovieEntry(
       "description",
       "genre",
