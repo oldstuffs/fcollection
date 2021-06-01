@@ -2,9 +2,9 @@ package io.github.portlek.fcollection.service;
 
 import io.github.portlek.fcollection.models.Movie;
 import io.github.portlek.fcollection.repository.MovieRepository;
-import io.github.portlek.fcollection.repository.PerformerRepository;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,10 +23,26 @@ public class MovieService {
   private final MovieRepository movieRepository;
 
   /**
-   * the performer repository.
+   * gets the movies by genre.
+   *
+   * @param genre the genre to get.
+   *
+   * @return obtained movies by genre.
    */
-  @Autowired
-  private final PerformerRepository performerRepository;
+  public Collection<Movie> getMoviesByGenre(final String genre) {
+    return this.movieRepository.findAllByGenre(genre);
+  }
+
+  /**
+   * gets the movies by name.
+   *
+   * @param name the name to get.
+   *
+   * @return obtained movies by name.
+   */
+  public Collection<Movie> getMoviesByName(final String name) {
+    return this.movieRepository.findAllByName(name);
+  }
 
   /**
    * gets the movies by performer name.
@@ -36,11 +52,9 @@ public class MovieService {
    * @return obtained movies by performer name.
    */
   public Collection<Movie> getMoviesByPerformerName(final String name) {
-    final var movies = new ArrayList<Movie>();
-    final var performers = this.performerRepository.findAllByName(name);
-    // SELECT * FROM movie_performers  WHERE performers_id = 3;
-    performers.forEach(performer -> {
-    });
-    return movies;
+    return this.movieRepository.findAll().stream()
+      .filter(movie -> movie.getPerformers().stream()
+        .anyMatch(performer -> Objects.equals(performer.getName(), name)))
+      .collect(Collectors.toSet());
   }
 }

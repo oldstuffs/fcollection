@@ -27,6 +27,32 @@ public class MovieController {
   private final MovieService service;
 
   /**
+   * gets the movies by genre.
+   *
+   * @param name the name to get.
+   *
+   * @return obtained movies by genre.
+   */
+  @GetMapping("/{genre}")
+  public Collection<Movie> getMoviesByGenre(
+    @PathVariable("genre") final String name) {
+    return this.service.getMoviesByGenre(name);
+  }
+
+  /**
+   * gets the movies by name.
+   *
+   * @param name the name to get.
+   *
+   * @return obtained movies by name.
+   */
+  @GetMapping("/{name}")
+  public Collection<Movie> getMoviesByName(
+    @PathVariable("name") final String name) {
+    return this.service.getMoviesByName(name);
+  }
+
+  /**
    * gets the movies by performer name.
    *
    * @param name the name to get.

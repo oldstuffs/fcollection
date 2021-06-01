@@ -1,6 +1,5 @@
 package io.github.portlek.fcollection;
 
-import io.github.portlek.fcollection.models.Language;
 import io.github.portlek.fcollection.models.Movie;
 import io.github.portlek.fcollection.models.Performer;
 import io.github.portlek.fcollection.repository.MovieRepository;
@@ -23,7 +22,7 @@ public class FCollectionApplication {
   public CommandLineRunner commandLineRunner(final MovieRepository repository) {
     return args -> {
       final var performer = new Performer("Hasan", "Demirtaş");
-      final var languages = Set.of(new Language("tr_TR"), new Language("en_US"));
+      final var languages = Set.of("tr_TR", "en_US");
       repository.saveAll(Set.of(
         new Movie(
           "Movie 1",

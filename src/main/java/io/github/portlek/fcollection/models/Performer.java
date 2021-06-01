@@ -1,10 +1,5 @@
 package io.github.portlek.fcollection.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,41 +10,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity(name = "Performer")
-@Table(name = "performers")
 public class Performer {
-
-  /**
-   * id of the performer.
-   */
-  @Id
-  @GeneratedValue
-  private long id;
 
   /**
    * last name of the performer.
    */
-  @Column(
-    name = "last_name",
-    nullable = false
-  )
   private String lastName;
 
   /**
    * name of the performer.
    */
-  @Column(
-    name = "name",
-    nullable = false
-  )
   private String name;
 
   /**
    * role of the performer.
    */
-  @Column(
-    name = "role"
-  )
   private String role;
 
   /**
