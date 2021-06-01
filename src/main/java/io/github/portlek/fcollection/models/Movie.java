@@ -1,5 +1,6 @@
 package io.github.portlek.fcollection.models;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
@@ -43,7 +44,7 @@ public class Movie {
   /**
    * performers of the movie.
    */
-  private Set<Performer> performers;
+  private Collection<Performer> performers;
 
   /**
    * released date of the movie.
@@ -53,7 +54,7 @@ public class Movie {
   /**
    * supported languages of the movie.
    */
-  private Set<String> supportedLanguages;
+  private Collection<String> supportedLanguages;
 
   /**
    * unique id of the movie.
@@ -74,8 +75,8 @@ public class Movie {
    * @param supportedLanguages the supported languages.
    */
   public Movie(final String uniqueId, final String name, final String description, final String genre,
-               final String mediaUrl, final Set<Performer> performers, final Date released,
-               final Set<String> supportedLanguages) {
+               final String mediaUrl, final Collection<Performer> performers, final Date released,
+               final Collection<String> supportedLanguages) {
     this.uniqueId = uniqueId;
     this.name = name;
     this.description = description;
@@ -98,7 +99,8 @@ public class Movie {
    * @param supportedLanguages the supported languages.
    */
   public Movie(final String name, final String description, final String genre, final String mediaUrl,
-               final Set<Performer> performers, final Date released, final Set<String> supportedLanguages) {
+               final Collection<Performer> performers, final Date released,
+               final Collection<String> supportedLanguages) {
     this(UUID.randomUUID().toString(), name, description, genre, mediaUrl, performers, released, supportedLanguages);
   }
 }

@@ -1,6 +1,7 @@
 package io.github.portlek.fcollection.service;
 
 import io.github.portlek.fcollection.models.Movie;
+import io.github.portlek.fcollection.models.MovieEntry;
 import io.github.portlek.fcollection.repository.MovieRepository;
 import java.util.Collection;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,33 @@ public class MovieService {
    */
   @Autowired
   private final MovieRepository movieRepository;
+
+  /**
+   * adds the movie.
+   *
+   * @param entry the entry to add.
+   */
+  public void addMovie(final MovieEntry entry) {
+    this.movieRepository.save(entry.createMovie());
+  }
+
+  /**
+   * changes the movie.
+   *
+   * @param id the id to change.
+   * @param entry the entry to change.
+   */
+  public void changeMovie(final String id, final MovieEntry entry) {
+  }
+
+  /**
+   * deletes the movie by unique id.
+   *
+   * @param uniqueId the unique id to delete.
+   */
+  public void deleteMovie(final String uniqueId) {
+    this.movieRepository.deleteByUniqueId(uniqueId);
+  }
 
   /**
    * gets the movies by genre, name, performer.

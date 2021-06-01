@@ -16,6 +16,13 @@ import org.springframework.stereotype.Repository;
 public interface MovieRepository extends MongoRepository<Movie, Long> {
 
   /**
+   * deletes the movie by unique id.
+   *
+   * @param uniqueId the unique id to delete.
+   */
+  void deleteByUniqueId(final String uniqueId);
+
+  /**
    * finds all movies by genre.
    *
    * @param genre the genre to find.
