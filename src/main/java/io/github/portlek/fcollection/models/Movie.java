@@ -49,8 +49,7 @@ public class Movie {
   /**
    * released date of the movie.
    */
-  @JsonFormat(pattern = "dd-MM-yyyy")
-  private Date released;
+  private long released;
 
   /**
    * supported languages of the movie.
@@ -76,7 +75,7 @@ public class Movie {
    * @param supportedLanguages the supported languages.
    */
   public Movie(final String uniqueId, final String name, final String description, final String genre,
-               final String mediaUrl, final Collection<Performer> performers, final Date released,
+               final String mediaUrl, final Collection<Performer> performers, final long released,
                final Collection<String> supportedLanguages) {
     this.uniqueId = uniqueId;
     this.name = name;
@@ -100,7 +99,7 @@ public class Movie {
    * @param supportedLanguages the supported languages.
    */
   public Movie(final String name, final String description, final String genre, final String mediaUrl,
-               final Collection<Performer> performers, final Date released,
+               final Collection<Performer> performers, final long released,
                final Collection<String> supportedLanguages) {
     this(UUID.randomUUID().toString(), name, description, genre, mediaUrl, performers, released, supportedLanguages);
   }

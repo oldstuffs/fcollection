@@ -38,7 +38,7 @@ final class MovieServiceTest {
       "mediaUrl",
       "name",
       List.of(new Performer("performer-name", "performer-last-name", "performer-rol")),
-      Date.from(Instant.now()),
+      Instant.now().toEpochMilli(),
       List.of("tr_TR", "en_US"));
     final var movie = this.service.addMovie(entry);
     assertTrue(this.repository.findByUniqueId(movie.getUniqueId()).isPresent(),

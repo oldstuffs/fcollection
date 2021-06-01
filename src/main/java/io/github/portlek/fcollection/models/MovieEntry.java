@@ -47,8 +47,7 @@ public final class MovieEntry {
   /**
    * released date of the movie.
    */
-  @JsonFormat(pattern = "dd-MM-yyyy")
-  private Date released;
+  private long released;
 
   /**
    * supported languages of the movie.
