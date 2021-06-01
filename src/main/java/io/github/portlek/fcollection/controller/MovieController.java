@@ -7,6 +7,7 @@ import java.util.Collection;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,10 +49,10 @@ public class MovieController {
    * @param entry the entry to add.
    */
   @PutMapping("/{id}")
-  public void changeMovie(
+  public ResponseEntity<Movie> changeMovie(
     @PathVariable("id") final String id,
     @RequestBody final MovieEntry entry) {
-    this.service.changeMovie(id, entry);
+    return ResponseEntity.of(this.service.changeMovie(id, entry));
   }
 
   /**
@@ -76,11 +77,11 @@ public class MovieController {
    * @return obtained movies by genre, name, performer.
    */
   @GetMapping
-  public Collection<Movie> getMovies(
+  public ResponseEntity<Collection<Movie>> getMovies(
     @RequestParam(name = "genre", required = false) final String genre,
     @RequestParam(name = "name", required = false) final String name,
     @RequestParam(name = "performer", required = false) final String performer,
     @RequestParam(name = "sortByDate", required = false) final boolean sortByDate) {
-    return this.service.getMovies(genre, name, performer, sortByDate);
+    return ResponseEntity.ok(this.service.getMovies(genre, name, performer, sortByDate));
   }
 }

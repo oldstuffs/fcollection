@@ -4,6 +4,7 @@ import io.github.portlek.fcollection.models.Movie;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -89,4 +90,13 @@ public interface MovieRepository extends MongoRepository<Movie, Long> {
         .anyMatch(performer -> Objects.equals(performer.getName(), name)))
       .collect(Collectors.toSet());
   }
+
+  /**
+   * finds the movie by unique id.
+   *
+   * @param uniqueId the unique id to find.
+   *
+   * @return found movie by unique id.
+   */
+  Optional<Movie> findByUniqueId(final String uniqueId);
 }

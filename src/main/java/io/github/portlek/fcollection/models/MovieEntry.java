@@ -56,4 +56,16 @@ public final class MovieEntry {
     return new Movie(this.name, this.description, this.genre, this.mediaUrl, this.performers, this.released,
       this.supportedLanguages);
   }
+
+  /**
+   * creates a movie with unique id.
+   *
+   * @param uniqueId the unique id.
+   *
+   * @return movie.
+   */
+  public Movie createMovie(final String uniqueId) {
+    return new Movie(uniqueId, this.name, this.description, this.genre, this.mediaUrl, this.performers, this.released,
+      this.supportedLanguages);
+  }
 }

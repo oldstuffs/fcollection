@@ -4,6 +4,7 @@ import io.github.portlek.fcollection.models.Movie;
 import io.github.portlek.fcollection.models.MovieEntry;
 import io.github.portlek.fcollection.repository.MovieRepository;
 import java.util.Collection;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,12 @@ public class MovieService {
    * @param id the id to change.
    * @param entry the entry to change.
    */
-  public void changeMovie(final String id, final MovieEntry entry) {
+  public Optional<Movie> changeMovie(final String id, final MovieEntry entry) {
+    final var movie = this.movieRepository.findByUniqueId(id);
+    if (movie.isEmpty()) {
+      return Optional.empty();
+    }
+    return Optional.of(this.movieRepository.save(entry.createMovie(movie.get().getUniqueId())));
   }
 
   /**
