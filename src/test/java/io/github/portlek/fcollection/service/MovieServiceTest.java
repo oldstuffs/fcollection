@@ -7,8 +7,6 @@ import io.github.portlek.fcollection.models.MovieEntry;
 import io.github.portlek.fcollection.models.Performer;
 import io.github.portlek.fcollection.repository.MovieRepository;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.List;
 import org.junit.jupiter.api.MethodOrderer;
