@@ -6,6 +6,7 @@ import java.util.Collection;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Data
 @RestController
-@RequestMapping("movie")
+@RequestMapping("movies")
 @RequiredArgsConstructor
 public class MovieController {
 
@@ -27,41 +28,17 @@ public class MovieController {
   private final MovieService service;
 
   /**
-   * gets the movies by genre.
+   * gets the movies by genre, name, performer.
    *
-   * @param name the name to get.
+   * @param genre the genre to get.
    *
-   * @return obtained movies by genre.
+   * @return obtained movies by genre, name, performer.
    */
-  @GetMapping("/genre/{genre}")
-  public Collection<Movie> getMoviesByGenre(
-    @PathVariable("genre") final String name) {
-    return this.service.getMoviesByGenre(name);
-  }
-
-  /**
-   * gets the movies by name.
-   *
-   * @param name the name to get.
-   *
-   * @return obtained movies by name.
-   */
-  @GetMapping("/name/{name}")
-  public Collection<Movie> getMoviesByName(
-    @PathVariable("name") final String name) {
-    return this.service.getMoviesByName(name);
-  }
-
-  /**
-   * gets the movies by performer name.
-   *
-   * @param name the name to get.
-   *
-   * @return obtained movies by performer name.
-   */
-  @GetMapping("/performer/{name}")
-  public Collection<Movie> getMoviesByPerformerName(
-    @PathVariable("name") final String name) {
-    return this.service.getMoviesByPerformerName(name);
+  @GetMapping
+  public Collection<Movie> getMovies(
+    @Param("genre") final String genre,
+    @Param("name") final String name,
+    @Param("performer") final String performer) {
+    return this.service.getMovies(genre, name, performer);
   }
 }

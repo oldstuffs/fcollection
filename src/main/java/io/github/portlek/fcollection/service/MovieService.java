@@ -3,6 +3,7 @@ package io.github.portlek.fcollection.service;
 import io.github.portlek.fcollection.models.Movie;
 import io.github.portlek.fcollection.repository.MovieRepository;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,19 @@ public class MovieService {
    */
   @Autowired
   private final MovieRepository movieRepository;
+
+  public Collection<Movie> getMovies(final String genre, final String name, final String performer) {
+    if (genre != null) {
+      return this.getMoviesByGenre(genre);
+    }
+    if (name != null) {
+      return this.getMoviesByName(name);
+    }
+    if (performer != null) {
+      return this.getMoviesByPerformerName(performer);
+    }
+    return Collections.emptySet();
+  }
 
   /**
    * gets the movies by genre.
