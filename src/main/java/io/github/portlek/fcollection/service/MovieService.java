@@ -26,9 +26,11 @@ public class MovieService {
    * adds the movie.
    *
    * @param entry the entry to add.
+   *
+   * @return added movie.
    */
-  public void addMovie(final MovieEntry entry) {
-    this.movieRepository.save(entry.createMovie());
+  public Movie addMovie(final MovieEntry entry) {
+    return this.movieRepository.save(entry.createMovie());
   }
 
   /**
