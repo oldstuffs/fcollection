@@ -9,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
@@ -24,7 +26,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity(name = "Movie")
-@Table(name = "movie")
+@Table(name = "movies")
 public class Movie {
 
   /**
@@ -89,9 +91,12 @@ public class Movie {
   /**
    * performer of the movie.
    */
-  @ManyToMany(
+  @OneToMany(
     targetEntity = Performer.class,
     cascade = CascadeType.ALL
+  )
+  @JoinTable(
+    name = "move_performers"
   )
   private Set<Performer> performers;
 
@@ -107,11 +112,14 @@ public class Movie {
   /**
    * supported languages of the movie.
    */
-  @ElementCollection(targetClass = String.class)
-  @JoinTable(
-    name = "supported_languages"
+  @OneToMany(
+    targetEntity = Language.class,
+    cascade = CascadeType.ALL
   )
-  private Set<String> supportedLanguages;
+  @JoinTable(
+    name = "move_supported_languages"
+  )
+  private Set<Language> supportedLanguages;
 
   /**
    * ctor.
@@ -125,7 +133,7 @@ public class Movie {
    * @param supportedLanguages the supported languages.
    */
   public Movie(final String name, final String description, final String genre, final String mediaUrl,
-               final Set<Performer> performers, final Date released, final Set<String> supportedLanguages) {
+               final Set<Performer> performers, final Date released, final Set<Language> supportedLanguages) {
     this.name = name;
     this.description = description;
     this.genre = genre;

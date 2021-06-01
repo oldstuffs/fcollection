@@ -1,7 +1,10 @@
 package io.github.portlek.fcollection.service;
 
 import io.github.portlek.fcollection.models.Movie;
+import io.github.portlek.fcollection.models.Performer;
 import io.github.portlek.fcollection.repository.MovieRepository;
+import io.github.portlek.fcollection.repository.PerformerRepository;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +20,16 @@ import org.springframework.stereotype.Service;
 public class MovieService {
 
   /**
-   * the repository.
+   * the movie repository.
    */
   @Autowired
-  private final MovieRepository repository;
+  private final MovieRepository movieRepository;
+
+  /**
+   * the performer repository.
+   */
+  @Autowired
+  private final PerformerRepository performerRepository;
 
   /**
    * gets the movies by performer name.
@@ -30,6 +39,12 @@ public class MovieService {
    * @return obtained movies by performer name.
    */
   public Collection<Movie> getMoviesByPerformerName(final String name) {
-    return Collections.emptySet();
+    final var movies = new ArrayList<Movie>();
+    final var performers = this.performerRepository.findAllByName(name);
+    // SELECT * FROM movie_performers  WHERE performers_id = 3;
+    performers.forEach(performer -> {
+
+    });
+    return movies;
   }
 }
