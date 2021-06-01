@@ -9,6 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * a class that represents a Language.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,6 +19,9 @@ import lombok.Setter;
 @Table(name = "supported_languages")
 public class Language {
 
+  /**
+   * id of the language.
+   */
   @Id
   @GeneratedValue
   @Column(
@@ -24,12 +30,20 @@ public class Language {
   )
   private long id;
 
+  /**
+   * language name of the language.
+   */
   @Column(
     name = "language",
     unique = true
   )
   private String language;
 
+  /**
+   * ctor.
+   *
+   * @param language the language.
+   */
   public Language(final String language) {
     this.language = language;
   }
