@@ -19,7 +19,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity(name = "Language")
-@Table(name = "supported_languages")
+@Table(
+  name = "supported_languages"
+)
 public class Language {
 
   /**

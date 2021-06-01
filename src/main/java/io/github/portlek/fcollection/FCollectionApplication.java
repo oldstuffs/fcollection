@@ -24,7 +24,7 @@ public class FCollectionApplication {
     return args -> {
       final var performer = new Performer("Hasan", "Demirtaş");
       final var languages = Set.of(new Language("tr_TR"), new Language("en_US"));
-      final var movie1 = new Movie(
+      final var movie = new Movie(
         "Movie 1",
         "fdese",
         "asdasd",
@@ -32,15 +32,7 @@ public class FCollectionApplication {
         Set.of(performer),
         Date.from(Instant.now()),
         languages);
-      final var movie2 = new Movie(
-        "Movie 2",
-        "fdese",
-        "asdasd",
-        "aslşdjasd",
-        Set.of(performer),
-        Date.from(Instant.now()),
-        languages);
-      repository.saveAll(Set.of(movie1, movie2));
+      repository.save(movie);
     };
   }
 }
