@@ -6,11 +6,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -52,19 +54,7 @@ public class Movie {
    * id of the movie.
    */
   @Id
-  @SequenceGenerator(
-    name = "movie_sequence",
-    sequenceName = "movie_sequence",
-    allocationSize = 1
-  )
-  @GeneratedValue(
-    strategy = GenerationType.SEQUENCE,
-    generator = "movie_sequence"
-  )
-  @Column(
-    name = "id",
-    updatable = false
-  )
+  @GeneratedValue
   private long id;
 
   /**
@@ -90,10 +80,15 @@ public class Movie {
   /**
    * performers of the movie.
    */
-  @OneToMany(
+  @ManyToMany(
     targetEntity = Performer.class,
     cascade = CascadeType.ALL,
     fetch = FetchType.EAGER
+  )
+  @JoinColumn(
+    foreignKey = @ForeignKey(
+      name = "movies_performers_fk"
+    )
   )
   private Set<Performer> performers;
 
@@ -109,9 +104,14 @@ public class Movie {
   /**
    * supported languages of the movie.
    */
-  @OneToMany(
+  @ManyToMany(
     targetEntity = Language.class,
     cascade = CascadeType.ALL
+  )
+  @JoinColumn(
+    foreignKey = @ForeignKey(
+      name = "movies_supported_languages_fk"
+    )
   )
   private Set<Language> supportedLanguages;
 

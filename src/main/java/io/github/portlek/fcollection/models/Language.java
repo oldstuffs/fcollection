@@ -20,7 +20,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity(name = "Language")
 @Table(
-  name = "supported_languages"
+  name = "supported_languages",
+  uniqueConstraints = {
+    @UniqueConstraint(
+      name = "supported_languages_language_unique",
+      columnNames = "language"
+    )
+  }
 )
 public class Language {
 
@@ -28,19 +34,7 @@ public class Language {
    * id of the language.
    */
   @Id
-  @SequenceGenerator(
-    name = "supported_language_sequence",
-    sequenceName = "supported_language_sequence",
-    allocationSize = 1
-  )
-  @GeneratedValue(
-    strategy = GenerationType.SEQUENCE,
-    generator = "supported_language_sequence"
-  )
-  @Column(
-    name = "id",
-    updatable = false
-  )
+  @GeneratedValue
   private long id;
 
   /**

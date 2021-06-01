@@ -25,19 +25,7 @@ public class Performer {
    * id of the performer.
    */
   @Id
-  @SequenceGenerator(
-    name = "performer_sequence",
-    sequenceName = "performer_sequence",
-    allocationSize = 1
-  )
-  @GeneratedValue(
-    strategy = GenerationType.SEQUENCE,
-    generator = "performer_sequence"
-  )
-  @Column(
-    name = "id",
-    updatable = false
-  )
+  @GeneratedValue
   private long id;
 
   /**
