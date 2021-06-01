@@ -40,8 +40,7 @@ public class FCollectionApplication {
         Set.of(performer),
         Date.from(Instant.now()),
         languages);
-      repository.save(movie1);
-      repository.save(movie2);
+      repository.saveAll(Set.of(movie1, movie2));
     };
   }
 }
