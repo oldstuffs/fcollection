@@ -41,7 +41,8 @@ public class MovieController {
    * @return added movie.
    */
   @PostMapping
-  public ResponseEntity<Movie> addMovie(@RequestBody final MovieEntry entry) {
+  public ResponseEntity<Movie> addMovie(
+    @RequestBody final MovieEntry entry) {
     return ResponseEntity.ok(this.service.addMovie(entry));
   }
 
