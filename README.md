@@ -72,6 +72,10 @@ All parameters are optional.
 
 Example usage for getting movies:
 
+Getting all movies:
+
+`GET http://localhost:8080/movies`
+
 Getting movies by name:
 
 `GET http://localhost:8080/movies?name=Movie 1`
