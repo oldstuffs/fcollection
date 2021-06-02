@@ -2,6 +2,11 @@
 
 ## Usage
 
+### Requirements
+
+- Java 11+
+- MongoDB
+
 ### Build The Project
 
 Have maven installed
