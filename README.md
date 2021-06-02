@@ -6,6 +6,7 @@
 
 - Java 11+
 - MongoDB
+- Maven (Optional)
 
 ### Build The Project
 
