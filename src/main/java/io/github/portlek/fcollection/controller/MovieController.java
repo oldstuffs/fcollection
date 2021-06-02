@@ -49,6 +49,8 @@ public class MovieController {
    * changes the movie.
    *
    * @param entry the entry to add.
+   *
+   * @return changed movie.
    */
   @PutMapping("/{id}")
   public ResponseEntity<Movie> changeMovie(
