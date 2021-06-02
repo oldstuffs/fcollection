@@ -46,7 +46,7 @@ public class MovieController {
   }
 
   /**
-   * adds the movie.
+   * changes the movie.
    *
    * @param entry the entry to add.
    */
